@@ -23,7 +23,103 @@
              <button type="submit">Submit</button>
         </div>
 
-        
+
     </form>
+
+    <form >
+        <label for="product">Product</label>
+        <br>
+        <select name="product" id="product" multiple size="1">
+            <option value="iphone">Iphone</option>
+            <option value="samsung" selected>Samsung</option>
+            <option value="redmi">Redmi</option>
+            <option value="realme">Realme</option>
+        </select>
+        <br>
+        <label for="message" id="message">Message</label>
+        <br>
+        <textarea name="message" id="message" placeholder="Enter issue" ></textarea>
+        <br>
+        <input type="submit" value="Submit">
+    </form>
+
+    <!-- Checkboxes and RadioButtons -->
+     <hr>
+
+    <form>
+        <label for="html">
+            <input type="checkbox" name="Languages" id="html" value="html"> HTML
+        </label>
+        <label for="css">
+            <input type="checkbox" name="Languages" id="css" value="css"> CSS
+        </label>
+        <label for="java">
+            <input type="checkbox" disabled name="Languages" id="java" value="java"> JAVA
+        </label>
+        <label for="python">
+            <input type="checkbox" name="Languages" id="python" value="python"> PYTHON
+        </label>
+    </form>
+    <h2>Product size</h2>
+    <form >
+        <label for="small">
+            <input type="radio" name="size" id="small" value="small"> Small
+        </label>
+        <label for="Medium" >
+            <input checked type="radio" name="size" id="Medium" value="Medium"> Medium
+        </label>
+        <label for="large">
+            <input type="radio" name="size" id="large" value="large"> Large
+        </label>
+    </form>
+
+    <hr>
+    <form >
+        <div>
+        <label for="color" >
+            color
+        </label>
+        <input type="color" name="color" id="color">
+        </div>
+        <br>
+
+    </form>
+    <form >
+        <div>
+        <label for="date" >
+            date
+        </label>
+        <input type="date" name="date" id="date">
+        </div>
+        <br>
+
+    </form>
+    <form >
+        <div>
+        <label for="time" >
+            time
+        </label>
+        <input type="time" name="time" id="time">
+        </div>
+        <br>
+
+        <div>
+        <label for="range" >
+            range
+        </label>
+        <input type="range" name="range" id="range"  min="0" max="100" step="5">
+        </div>
+        <br>
+        <div>
+        <label for="url" >
+            url
+        </label>
+        <input type="url" name="url" id="url">
+        </div>
+        <br>
+        <input type="submit" value="submit">
+    </form>
+
+    
 </body>
 </html>
