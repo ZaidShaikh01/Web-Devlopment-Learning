@@ -1,9 +1,40 @@
-        h1{
-            background-color: blue;
-            color: red;
-            
-        }
-        p{
-            background-color: black;
-            color: red;
-        }
+body{
+    font-family: 'Arial', sans-serif;
+    border: 3px solid red;
+}
+
+/* h2{
+    color: red;
+    font-size: 30px;
+}
+a{
+    color:blue;
+    text-decoration: none ;
+} */
+
+
+.sporty{
+    color: red;
+}
+.casual{
+    color: blue;
+}
+.formal{
+    color: brown;
+}
+
+#container {
+    max-width: 600px;
+    margin: 100px auto;
+    padding: 20px;
+}
+
+/* Multiple size selector */
+.sporty, .casual{
+    font-size: 35px;
+}
+/* descendent style */
+/* 
+#container p {
+    background-color: blue;
+} */
