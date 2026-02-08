@@ -1,40 +1,18 @@
 body{
-    font-family: 'Arial', sans-serif;
-    border: 3px solid red;
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+    background-color: #fff;
+    /* background-color: #000000; */
+    /* background: rgb(red, green, blue); */
+
 }
-
-/* h2{
-    color: red;
-    font-size: 30px;
-}
-a{
-    color:blue;
-    text-decoration: none ;
-} */
-
-
 .sporty{
     color: red;
 }
+/* hex values */
 .casual{
-    color: blue;
+    color: #e04553;
 }
-.formal{
-    color: brown;
+.cards{
+    background-color: rgba(red, green, blue, alpha);
 }
-
-#container {
-    max-width: 600px;
-    margin: 100px auto;
-    padding: 20px;
-}
-
-/* Multiple size selector */
-.sporty, .casual{
-    font-size: 35px;
-}
-/* descendent style */
-/* 
-#container p {
-    background-color: blue;
-} */
