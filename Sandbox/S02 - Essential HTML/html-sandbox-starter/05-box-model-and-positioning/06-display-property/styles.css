@@ -1,3 +1,29 @@
 body {
   font-family: Arial, sans-serif;
 }
+
+.none-el{
+  display: none;
+}
+.hidden-el{
+  visibility: hidden;
+}
+/* p{
+  display: inline;
+}
+a{
+  display: block;
+} */
+
+
+/* inline elements doesnt have margina width and height*/
+a{
+  background-color: lightblue;
+  border: blue solid 1px;
+  padding: 10px;
+  margin: 20px auto;
+  width: 50px;
+  height: 100px;
+  display: inline-block;
+
+}

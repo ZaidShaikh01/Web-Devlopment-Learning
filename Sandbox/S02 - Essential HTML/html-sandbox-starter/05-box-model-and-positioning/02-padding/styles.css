@@ -1,3 +1,13 @@
 body {
   font-family: 'Poppins', sans-serif;
 }
+.box{
+  background-color: darkblue;
+  color: white;
+  /* padding: 20px; */
+  width: 300px;
+  /* padding: top right bottom left; trouble */ 
+  /* padding: 20px 40px;top bottom */
+  /* padding: 20px 10px 40px; top-LR-B */
+  
+}
