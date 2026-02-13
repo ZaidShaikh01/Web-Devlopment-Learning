@@ -1,0 +1,84 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Open Sans', sans-serif;
+    background: black;
+    color: white;
+    line-height: 1.6;
+}
+.wrapper{
+    min-height: 100vh;
+  background: linear-gradient(
+      to bottom,
+      rgba(255, 64, 50, 0.8),
+      rgba(71, 17, 116, 0.9)
+    ),
+    url('../images/background.jpg') no-repeat center/cover;
+}
+
+header ul{
+    list-style-type: none;
+    display: flex;
+    justify-content: space-around;
+
+}
+header ul .space-in-between{
+    flex: 2;
+}
+header ul .logo{
+    width: 100px;
+}
+header ul li{
+    margin: 20px;
+}
+
+main{
+    display: flex;
+  gap: 150px;
+  max-width: 1100px;
+  margin: 200px auto;
+  justify-content: start;
+  align-items: center;
+  height: 100%;
+  padding: 0 40px;
+}
+.input-contents form{
+display: flex;
+flex-direction: column;
+justify-content: center;
+/* align-items: start; */
+}
+
+.input-contents form label{
+    font-size: 18px;
+}
+.input-contents form textarea{
+    /* width: 100%; */
+    padding: 15px;
+    border: 0;
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    outline: 0;
+    resize: none;
+    height: 100px;
+    resize: none;
+    margin-bottom: 10px;
+    width: 450px;
+}
+
+.input-contents form button{
+    width: 450px;
+    padding:15px;
+    border-radius: 50px;
+    border:0;
+    background-color: #ff4032;
+    margin-top: 10px;
+}
+.written-content h1{
+    font-size: 48px;
+}
