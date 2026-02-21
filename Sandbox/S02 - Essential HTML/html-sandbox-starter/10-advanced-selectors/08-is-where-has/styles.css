@@ -14,3 +14,21 @@ body {
   max-width: 600px;
   margin: 30px auto;
 }
+/* .container h1,
+.container h2,
+.container p{
+  color:red;
+}
+.container :is(h1,h2,p){
+  color: blue;
+}
+
+a:is(:hover,:focus){
+  background-color: pink;
+}
+.container :where(h1,h2,p){
+  color: blue;
+} */
+.container:has(h1 span){
+  color: red;
+}
