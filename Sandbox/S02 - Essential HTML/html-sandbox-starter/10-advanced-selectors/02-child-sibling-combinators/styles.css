@@ -22,12 +22,29 @@ body {
 */
 
 /* Get only paragraphs that are direct children of container */
-
+.container > p{
+  font-weight: bold;
+  margin-bottom: 2rem;
+}
 /* Get only unordered lists that are direct children of container */
+.container > ul{
+  list-style: none;
+}
 
 /* Get only links that are direct children of container */
+.container > a{
+  color: rebeccapurple;
+}
 
 /* Get the immidiate sibling link after h1 */
-
+.container h1 + a{
+  color: green;
+}
 /* Get all links that are siblings that come after h1 */
+.container h1 ~ a{
+  color: purple;
+}
 
+.container > ul + div{
+  background-color: blue;
+}

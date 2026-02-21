@@ -23,3 +23,35 @@ input {
   width: 100%;
   padding: 5px;
 }
+p::first-letter{
+  font-size: 2rem;
+  color: rebeccapurple;
+  padding-right: 20px;
+  font-weight: bold;
+}
+p::first-line{
+  color: peru;
+
+}
+p::selection{
+  color:rebeccapurple;
+  background-color: yellow;
+}
+input:required{
+  border-color: red;
+}
+input::placeholder{
+  color: purple;
+  font-weight: bold;
+}
+input::file-selector-button{
+  font-weight: bold;
+  color: dodgerblue;
+  background-color: white;
+  padding: 0.5rem;
+  border: thin solid gray;
+  border-radius: 3px;
+}
+li::marker{
+  content: '😂';
+}

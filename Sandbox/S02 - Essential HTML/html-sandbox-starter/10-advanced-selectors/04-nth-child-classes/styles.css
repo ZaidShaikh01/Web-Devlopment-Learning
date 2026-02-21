@@ -4,15 +4,35 @@ body {
 }
 
 /* Style the first li of it's parent */
+ul li:first-child{
+  background-color: aliceblue;
+}
 
 /* Style the last li of it's parent */
+ul li:last-child{
+  background-color: rebeccapurple;
+}
 
 /* Style every odd item */
+ul li:nth-child(odd){
+  background-color: lightblue;
+}
 
 /* Style every even item */
+ul li:nth-child(even){
+  background-color: lightgreen;
+}
 
 /* Style every nth Item */
+ul li:nth-child(4){
+  background-color: rebeccapurple;
+}
 
 /*  Style every 4th item */
-
+ul li:nth-child(4n){
+  background-color: blanchedalmond;
+}
 /* Style the only child */
+ul li:only-child{
+  background-color: black;
+}
