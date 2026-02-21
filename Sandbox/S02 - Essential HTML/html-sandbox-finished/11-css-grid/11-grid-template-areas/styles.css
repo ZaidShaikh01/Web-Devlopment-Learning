@@ -11,11 +11,13 @@ body {
 .container {
   display: grid;
   gap: 1rem;
-  grid-template-areas:
-    'header header search'
-    'nav nav nav'
-    'main main aside'
-    'footer footer footer';
+  grid-template-areas: 
+  'header header search'
+  'nav nav nav'
+  'main main aside'
+  'footer footer footer'
+  ;
+
 }
 
 header {
@@ -23,6 +25,7 @@ header {
   color: #fff;
   padding: 20px;
   grid-area: header;
+
 }
 
 nav {
@@ -30,6 +33,7 @@ nav {
   color: #fff;
   padding: 20px;
   grid-area: nav;
+  
 }
 
 .search {
@@ -59,13 +63,13 @@ footer {
 }
 
 @media (max-width: 768px) {
-  .container {
-    grid-template-areas:
-      'header'
-      'search'
-      'nav'
-      'main'
-      'aside'
-      'footer';
+  .container{
+    grid-template-areas: 
+    'header'
+    'search'
+    'nav'
+    'main'
+    'aside'
+    'footer';
   }
 }
