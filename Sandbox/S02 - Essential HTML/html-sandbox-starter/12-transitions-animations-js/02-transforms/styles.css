@@ -1,3 +1,23 @@
 body {
   font-family: 'Arial', sans-serif;
 }
+
+.container{
+  max-width: 600px;
+  margin: 130px auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* height: 100vh; */
+}
+.logo{
+  max-width: 60%;
+  transition: all 0.5s ease-in-out;
+}
+.logo:hover{
+  transform: rotate(90deg);
+  transform: translate(200px,200px);
+  transform: skew(-30deg);
+  transform: scale(1.5);
+  transform: rotate(90deg) translateX(200px) scale(2);
+}
