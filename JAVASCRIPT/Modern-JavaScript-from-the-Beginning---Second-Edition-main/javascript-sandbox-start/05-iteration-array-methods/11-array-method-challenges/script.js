@@ -35,7 +35,23 @@ const people = [
     phone: '555-555-5555',
     age: 23,
   },
+  ,
 ];
+const youngPeople = people
+  .filter((person) => person.age <= 25)
+  .map((youngPerson) => ({
+    name: youngPerson.firstName + ' ' + youngPerson.lastName,
+    email: youngPerson.email,
+  }));
 
 // Challenge 2
 const numbers = [2, -30, 50, 20, -12, -9, 7];
+
+const total = numbers
+  .filter((number) => number > 0)
+  .reduce((acc, currValue) => acc + currValue, 0);
+
+const words = ['coder', 'programmer', 'developer'];
+const capitalizeWords = words.map(
+  (word) => word[0].toUpperCase + word.slice(1, word.length),
+);
