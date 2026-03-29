@@ -4,7 +4,8 @@ const itemList = document.getElementById('item-list');
 const clearButton = document.getElementById('clear');
 const itemFilter = document.getElementById('filter');
 const items = document.querySelectorAll('li');
-function addItem(e) {
+
+function onAddItemSubmit(e) {
   e.preventDefault();
   newItem = itemInput.value;
   //Validate Items
@@ -12,19 +13,38 @@ function addItem(e) {
     alert('Please Enter A Valid Item Name');
     return;
   }
+  // Add TO DOM
+  addItemDom(newItem);
+  // Adding it to storage
+  addItemToStorage(newItem);
+  //Checking UI again
 
+  checkUi();
+
+  itemInput.value = '';
+}
+function addItemToStorage(item) {
+  let itemsFromStorage;
+  if (localStorage.getItem('items') === null) {
+    itemsFromStorage = [];
+  }
+  else{
+    itemsFromStorage = JSON.parse(localStorage.getitem('items'));
+  }
+  itemsFromStorage.push(item);
+  //Convert to json string
+  localStorage.setItem('items',JSON.stringify(itemsFromStorage))
+}
+
+function addItemDom(item) {
   const li = document.createElement('li');
-  li.appendChild(document.createTextNode(newItem));
+  li.appendChild(document.createTextNode(item));
 
   //Adding a button with values
   const button = createButton('remove-item btn-link text-red');
   li.appendChild(button);
   //Add the LI to the DOM
   itemList.appendChild(li);
-  //Checking UI again
-  checkUi();
-
-  itemInput.value = '';
 }
 
 function createButton(classes) {
@@ -79,7 +99,7 @@ function checkUi() {
     itemFilter.style.display = 'block';
   }
 }
-itemForm.addEventListener('submit', addItem);
+itemForm.addEventListener('submit', onAddItemSubmit);
 itemList.addEventListener('click', removeItem);
 clearButton.addEventListener('click', clearItems);
 itemFilter.addEventListener('input', filterItems);
