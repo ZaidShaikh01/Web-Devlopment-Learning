@@ -2,7 +2,8 @@ const itemForm = document.getElementById('item-form');
 const itemInput = document.getElementById('item-input');
 const itemList = document.getElementById('item-list');
 const clearButton = document.getElementById('clear');
-
+const itemFilter = document.getElementById('filter');
+const items = document.querySelectorAll('li');
 function addItem(e) {
   e.preventDefault();
   newItem = itemInput.value;
@@ -18,8 +19,11 @@ function addItem(e) {
   //Adding a button with values
   const button = createButton('remove-item btn-link text-red');
   li.appendChild(button);
-
+  //Add the LI to the DOM
   itemList.appendChild(li);
+  //Checking UI again
+  checkUi();
+
   itemInput.value = '';
 }
 
@@ -38,18 +42,46 @@ function createIcon(classes) {
   icon.className = classes;
   return icon;
 }
-function removeItem(e){
-    if(e.target.parentElement.classList.contains('remove-item')){
-        e.target.parentElement.parentElement.remove();
+function removeItem(e) {
+  if (e.target.parentElement.classList.contains('remove-item')) {
+    if (confirm('Are You Sure?')) {
+      e.target.parentElement.parentElement.remove();
     }
+  }
 }
 
-function clearItems(){
-    while(itemList.firstChild){
-        itemList.removeChild(itemList.firstChild);
+function clearItems() {
+  while (itemList.firstChild) {
+    itemList.removeChild(itemList.firstChild);
+  }
+  checkUi();
+}
+function filterItems(e) {
+  const text = e.target.value.toLowerCase();
+  items.forEach((item) => {
+    const itemName = item.firstChild.textContent.toLowerCase();
+    if (itemName.indexOf(text) != -1) {
+      item.style.display = 'flex';
+    } else {
+      item.style.display = 'none';
     }
+  });
+  console.log(text);
 }
 
+function checkUi() {
+  const items = document.querySelectorAll('li');
+  if (items.length === 0) {
+    clearButton.style.display = 'none';
+    itemFilter.style.display = 'none';
+  } else {
+    clearButton.style.display = 'block';
+    itemFilter.style.display = 'block';
+  }
+}
 itemForm.addEventListener('submit', addItem);
 itemList.addEventListener('click', removeItem);
-clearButton.addEventListener('click',clearItems);
+clearButton.addEventListener('click', clearItems);
+itemFilter.addEventListener('input', filterItems);
+
+checkUi();
