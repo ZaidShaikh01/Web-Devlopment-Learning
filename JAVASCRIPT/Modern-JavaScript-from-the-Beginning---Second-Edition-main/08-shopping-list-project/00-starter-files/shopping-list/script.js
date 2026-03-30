@@ -4,6 +4,8 @@ const itemList = document.getElementById('item-list');
 const clearButton = document.getElementById('clear');
 const itemFilter = document.getElementById('filter');
 const items = document.querySelectorAll('li');
+const formBtn = itemForm.querySelector('button');
+let isEditMode = false;
 
 function displayItems() {
   const itemsFromStorage = getItemFromStorage();
@@ -17,6 +19,15 @@ function onAddItemSubmit(e) {
   if (newItem === '') {
     alert('Please Enter A Valid Item Name');
     return;
+  }
+
+  // Check whether in Edit mode
+  if (isEditMode) {
+    const itemToEdit = itemList.querySelector('.edit-mode');
+    removeItemFromStorage(itemToEdit.textContent);
+    itemToEdit.classList.remove('edit-mode');
+    itemToEdit.remove();
+    isEditMode = false;
   }
   // Add TO DOM
   addItemDom(newItem);
@@ -76,7 +87,20 @@ function getItemFromStorage() {
 function onClickItem(e) {
   if (e.target.parentElement.classList.contains('remove-item')) {
     removeItem(e.target.parentElement.parentElement);
+  } else {
+    setItemToEdit(e.target);
   }
+}
+function setItemToEdit(item) {
+  isEditMode = true;
+
+  itemList.querySelectorAll('li').forEach((item) => {
+    item.classList.remove('edit-mode');
+  });
+  item.classList.add('edit-mode');
+  formBtn.innerHTML = '<i class ="fa-solid fa-pen"></i> Update Item';
+  formBtn.style.backgroundColor = '#228b22';
+  itemInput.value = item.textContent;
 }
 function removeItem(item) {
   if (confirm('Are you sure?')) {
@@ -117,7 +141,9 @@ function filterItems(e) {
   console.log(text);
 }
 
+
 function checkUi() {
+  itemInput.value = ''
   const items = document.querySelectorAll('li');
   if (items.length === 0) {
     clearButton.style.display = 'none';
@@ -126,11 +152,14 @@ function checkUi() {
     clearButton.style.display = 'block';
     itemFilter.style.display = 'block';
   }
+  formBtn.innerHTML = '<i class = "fa-solid fa-plus"></i> Add Item';
+  formBtn.style.backgroundColor = '#333'
+  isEditMode = false;
 }
 
 function init() {
   itemForm.addEventListener('submit', onAddItemSubmit);
-  itemList.addEventListener('click', onCLickItem);
+  itemList.addEventListener('click', onClickItem);
   clearButton.addEventListener('click', clearItems);
   itemFilter.addEventListener('input', filterItems);
   document.addEventListener('DOMContentLoaded', displayItems);
