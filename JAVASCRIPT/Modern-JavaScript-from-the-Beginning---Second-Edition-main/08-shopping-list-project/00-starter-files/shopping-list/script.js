@@ -5,6 +5,11 @@ const clearButton = document.getElementById('clear');
 const itemFilter = document.getElementById('filter');
 const items = document.querySelectorAll('li');
 
+function displayItems() {
+  const itemsFromStorage = getItemFromStorage();
+  itemsFromStorage.forEach((item) => addItemDom(item));
+  checkUi();
+}
 function onAddItemSubmit(e) {
   e.preventDefault();
   newItem = itemInput.value;
@@ -22,18 +27,6 @@ function onAddItemSubmit(e) {
   checkUi();
 
   itemInput.value = '';
-}
-function addItemToStorage(item) {
-  let itemsFromStorage;
-  if (localStorage.getItem('items') === null) {
-    itemsFromStorage = [];
-  }
-  else{
-    itemsFromStorage = JSON.parse(localStorage.getitem('items'));
-  }
-  itemsFromStorage.push(item);
-  //Convert to json string
-  localStorage.setItem('items',JSON.stringify(itemsFromStorage))
 }
 
 function addItemDom(item) {
@@ -61,6 +54,24 @@ function createIcon(classes) {
   const icon = document.createElement('icon');
   icon.className = classes;
   return icon;
+}
+
+function addItemToStorage(item) {
+  const itemsFromStorage = getItemFromStorage();
+
+  itemsFromStorage.push(item);
+  //Convert to json string
+  localStorage.setItem('items', JSON.stringify(itemsFromStorage));
+}
+
+function getItemFromStorage() {
+  let itemsFromStorage;
+  if (localStorage.getItem('items') === null) {
+    itemsFromStorage = [];
+  } else {
+    itemsFromStorage = JSON.parse(localStorage.getItem('items'));
+  }
+  return itemsFromStorage;
 }
 function removeItem(e) {
   if (e.target.parentElement.classList.contains('remove-item')) {
@@ -99,9 +110,13 @@ function checkUi() {
     itemFilter.style.display = 'block';
   }
 }
-itemForm.addEventListener('submit', onAddItemSubmit);
-itemList.addEventListener('click', removeItem);
-clearButton.addEventListener('click', clearItems);
-itemFilter.addEventListener('input', filterItems);
 
-checkUi();
+function init() {
+  itemForm.addEventListener('submit', onAddItemSubmit);
+  itemList.addEventListener('click', removeItem);
+  clearButton.addEventListener('click', clearItems);
+  itemFilter.addEventListener('input', filterItems);
+  document.addEventListener('DOMContentLoaded', displayItems);
+  checkUi();
+}
+init();
