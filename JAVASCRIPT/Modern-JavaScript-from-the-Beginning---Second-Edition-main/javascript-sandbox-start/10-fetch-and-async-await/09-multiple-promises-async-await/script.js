@@ -13,22 +13,44 @@ function getData(endpoint) {
       }
     };
 
-    setTimeout(() => {
-      xhr.send();
-    }, Math.floor(Math.random() * 3000) + 1000);
+    setTimeout(
+      () => {
+        xhr.send();
+      },
+      Math.floor(Math.random() * 3000) + 1000,
+    );
   });
 }
 
-getData('./movies.json')
-  .then((movies) => {
-    console.log(movies);
-    return getData('./actors.json');
-  })
-  .then((actors) => {
-    console.log(actors);
-    return getData('./directors.json');
-  })
-  .then((directors) => {
-    console.log(directors);
-  })
-  .catch((error) => console.log(error));
+// getData('./movies.json')
+//   .then((movies) => {
+//     console.log(movies);
+//     return getData('./actors.json');
+//   })
+//   .then((actors) => {
+//     console.log(actors);
+//     return getData('./directors.json');
+//   })
+//   .then((directors) => {
+//     console.log(directors);
+//   })
+//   .catch((error) => console.log(error));
+
+async function getAllData() {
+  const movies = await getData('./movies.json');
+  console.log(movies);
+  const actors = await getData('./actors.json');
+  console.log(actors);
+  const directors = await getData('./directors.json');
+  console.log(directors);
+}
+
+async function getAllDataWithFetch() {
+  const moviesRes = await fetch('./movies.json');
+  const movies = await moviesRes.json();
+  const actorRes = await fetch('./actor.json');
+  const actor = await actorRes.json();
+  const directorsRes = await fetch('./directors.json');
+  const directors = await directorsRes.json();
+  console.log(movies, actor, directors);
+}

@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600;700;800;900&display=swap"
+      rel="stylesheet"
+      Poppins
+    />
+    <link rel="stylesheet" href="/practise/To-do/css/styles.css" />
+    <title>To-Do project</title>
+  </head>
+  <body>
+    <div class="overlay"></div>
+
+    <section class="main">
+      <div class="container">
+        <h1 class="section-title">TODO LIST</h1>
+        <section class="search-bar">
+          <form class="search-form">
+            <input
+              type="text"
+              name="search"
+              id="search"
+              class="search-input"
+              placeholder="Search Note..."
+            />
+          </form>
+          <button class="btn">
+            <i class="fa-solid fa-moon"></i>
+          </button>
+        </section>
+        <div class="add-container">
+          <div class="add-content">
+            <h2 class="heading">NEW NOTE</h2>
+            <form class="add-form">
+              <input
+                type="text"
+                name="add"
+                id="add"
+                class="add-input"
+                placeholder="Input your note..."
+              />
+            </form>
+            <div class="add-buttons">
+              <button class="btn cancel" id="cancel">CANCEL</button>
+              <button class="btn apply" id="apply">APPLY</button>
+            </div>
+          </div>
+        </div>
+        <section class="note-section">
+          <div class="note">
+            <ul class="note-list">
+              
+            </ul>
+          </div>
+        </section>
+        <section class="button">
+          <button class="floating-action-button">
+            <i class="fa-solid fa-plus"></i>
+          </button>
+        </section>
+      </div>
+    </section>
+
+    <script src="/practise/To-do/js/script.js"></script>
+  </body>
+</html>
