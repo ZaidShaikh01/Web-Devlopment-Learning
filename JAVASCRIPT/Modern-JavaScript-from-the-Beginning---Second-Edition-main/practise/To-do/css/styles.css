@@ -84,6 +84,9 @@ li {
 .btn.apply {
   color: white;
 }
+.edit-container{
+    display: none;
+}
 .search-bar {
   width: 100%;
   display: flex;

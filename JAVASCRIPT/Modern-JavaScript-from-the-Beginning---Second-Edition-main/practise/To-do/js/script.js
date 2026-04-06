@@ -9,7 +9,11 @@ const SearchInput = document.querySelector('.search-input');
 const addInput = document.querySelector('.add-input');
 const cancelButton = document.getElementById('cancel');
 const applyButton = document.getElementById('apply');
+const editApplyButton = document.getElementById('editApply');
+const editCancelButton = document.getElementById('editCancel');
 const itemlist = document.querySelector('.note-list');
+const editContainer = document.querySelector('.edit-container');
+const editInput = document.querySelector('.edit-input');
 
 const todoList = [];
 const removeOverlay = () => {
@@ -29,7 +33,7 @@ function listItems() {
                   <label for="todo">${list.task}</label>
                 </form>
                 <div class="note-buttons">
-                  <button class="form-btn edit">
+                  <button class="form-btn editBtn">
                     <i class="fa-solid fa-pencil"></i>
                   </button>
                   <button class="form-btn remove">
@@ -50,19 +54,45 @@ function addElementToLocalStorage() {
   localStorage.setItem('todo', JSON.stringify(todoList));
   listItems();
 }
-function removeItem(e) {
+
+function clickUl(e) {
   const noteEntry = e.target.parentElement.parentElement.parentElement;
   const textContent = noteEntry.querySelector('label').textContent;
-
   if (e.target.parentElement.classList.contains('remove')) {
-    console.log('Remove Clicked');
-    e.target.parentElement.parentElement.parentElement.remove();
-    let todoList = JSON.parse(localStorage.getItem('todo')) || [];
-    todoList = todoList.filter((todo) => todo.task !== textContent);
-    localStorage.setItem('todo', JSON.stringify(todoList));
+    removeItem(e, noteEntry, textContent);
+  } else if (e.target.parentElement.classList.contains('editBtn')) {
+    console.log('Edit Item Clicked');
+    editItem(e, noteEntry, textContent);
+    editContainer.classList.toggle('show');
   }
 }
-
+function removeItem(e, noteEntry, textContent) {
+  console.log('Remove Clicked');
+  e.target.parentElement.parentElement.parentElement.remove();
+  let todoList = JSON.parse(localStorage.getItem('todo')) || [];
+  todoList = todoList.filter((todo) => todo.task !== textContent);
+  localStorage.setItem('todo', JSON.stringify(todoList));
+}
+function editItem(e, noteEntry, textContent) {
+  editApplyButton.addEventListener('click', () => {
+    newInput = editInput.value;
+    console.log('Edit Apply Clicked');
+    noteEntry.querySelector('label').textContent = newInput;
+    let todoList = JSON.parse(localStorage.getItem('todo')) || [];
+    todoList = todoList.map((todo) => {
+      if (todo.task === textContent) {
+        return { ...todo, task: editInput.value };
+      }
+      return todo;
+    });
+    localStorage.setItem('todo', JSON.stringify(todoList));
+    editContainer.classList.remove('show');
+  });
+  editCancelButton.addEventListener('click', () => {
+    console.log('Edit cancel clicked');
+    editContainer.classList.remove('show');
+  });
+}
 function init() {
   listItems();
   cancelButton.addEventListener('click', () => {
@@ -74,9 +104,6 @@ function init() {
     addElementToLocalStorage();
     removeOverlay();
   });
-  addInput.addEventListener('input', () => {
-    console.log(addInput.value);
-  });
 
   document
     .querySelector('.floating-action-button')
@@ -84,6 +111,7 @@ function init() {
       overlay.classList.toggle('show');
       addContainer.classList.toggle('show');
     });
-  itemlist.addEventListener('click', removeItem);
+
+  itemlist.addEventListener('click', clickUl);
 }
 document.addEventListener('DOMContentLoaded', init);
