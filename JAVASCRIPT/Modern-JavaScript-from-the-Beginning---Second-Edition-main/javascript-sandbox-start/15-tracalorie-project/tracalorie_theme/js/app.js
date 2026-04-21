@@ -9,6 +9,7 @@ class CalorieTracker {
     this._displayCaloriesConsumed();
     this._displayCaloriesBurned();
     this._displayCaloriesRemaining();
+    this._displayCaloriesProgress();
   }
 
   //   Public Methods //
@@ -53,8 +54,34 @@ class CalorieTracker {
   }
   _displayCaloriesRemaining() {
     const caloriesRemainingEl = document.getElementById('calories-remaining');
+    const progressEl = document.getElementById('calorie-progress');
     const remaining = this._calorieLimit - this._totalCalories;
     caloriesRemainingEl.innerHTML = remaining;
+
+    if (remaining <= 0) {
+      caloriesRemainingEl.parentElement.parentElement.classList.remove(
+        'bg-light',
+      );
+      caloriesRemainingEl.parentElement.parentElement.classList.add(
+        'bg-danger',
+      );
+      progressEl.classList.remove('bg-success');
+      progressEl.classList.add('bg-danger');
+    } else {
+      caloriesRemainingEl.parentElement.parentElement.classList.remove(
+        'bg-danger',
+      );
+      caloriesRemainingEl.parentElement.parentElement.classList.add('bg-light');
+      progressEl.classList.remove('bg-danger');
+      progressEl.classList.remove('bg-success');
+    }
+  }
+
+  _displayCaloriesProgress() {
+    const progressEl = document.getElementById('calorie-progress');
+    const percentage = (this._totalCalories / this._calorieLimit) * 100;
+    const width = Math.min(percentage, 100);
+    progressEl.style.width = `${width}%`;
   }
 
   _render() {
@@ -62,6 +89,7 @@ class CalorieTracker {
     this._displayCaloriesConsumed();
     this._displayCaloriesBurned();
     this._displayCaloriesRemaining();
+    this._displayCaloriesProgress();
   }
 }
 
@@ -82,9 +110,9 @@ class Workout {
 
 const tracker = new CalorieTracker();
 const breakFast = new Meal('BreakFast', 400);
-// const lunch = new Meal('Lunch', 350);
+const lunch = new Meal('Lunch', 2050);
 tracker.addMeal(breakFast);
-// tracker.addMeal(lunch);
+tracker.addMeal(lunch);
 
 const run = new Workout('Morning Run', 320);
 tracker.addWorkout(run);
