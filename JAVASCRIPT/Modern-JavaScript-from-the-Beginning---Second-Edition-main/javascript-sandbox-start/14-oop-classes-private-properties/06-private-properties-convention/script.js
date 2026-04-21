@@ -1,43 +1,42 @@
 class Wallet {
-  constructor() {
-    this._balance = 0;
-    this._transactions = [];
-  }
+  #balance = 0;
+  #transactions = [];
+
   deposit(amount) {
-    this._balance += amount;
-    this._processDepostite(amount);
+    this.#balance += amount;
+    this.#processDepostite(amount);
   }
   withdraw(amount) {
-    if (amount > this._balance) {
+    if (amount > this.#balance) {
       console.log('Not Enough Dude');
       return;
     }
-    this._processsWithdraw(amount);
-    this._balance -= amount;
+    this.#processsWithdraw(amount);
+    this.#balance -= amount;
   }
-  _processDepostite(amount) {
+  #processDepostite(amount) {
     console.log('Depositing amount: ' + amount);
-    this._transactions.push({
+    this.#transactions.push({
       type: 'deposite',
       amount: amount,
     });
   }
-  _processsWithdraw(amount) {
+  #processsWithdraw(amount) {
     console.log('Withdrawing amount: ' + amount);
-    this._transactions.push({
+    this.#transactions.push({
       type: 'withdraw',
       amount: amount,
     });
   }
   get balance() {
-    return this._balance;
+    return this.#balance;
   }
   get transactions() {
-    return this._transactions;
+    return this.#transactions;
   }
 }
 const wallet = new Wallet();
-wallet.deposit(300);
-wallet.withdraw(50);
-console.log(wallet.balance);
+wallet.deposit(500);
+wallet.withdraw(100);
 console.log(wallet.transactions);
+console.log(wallet.balance);
